@@ -1,5 +1,5 @@
 export const profile = {
-  name: 'Екатерина Симаков',
+  name: 'Екатерина Симакова',
   role: 'Сценарист онлайн-игр / Narrative Designer',
   location: 'Удаленно · Европа / СНГ',
   email: 'writer@example.com',
