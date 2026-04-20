@@ -1,5 +1,12 @@
 import authorPhoto from './assets/photo_2020-08-05_22-19-35.jpg'
-import { profile, projects, stats, strengths, timeline } from './content'
+import {
+  background,
+  deliverables,
+  fit,
+  markers,
+  profile,
+  strengths,
+} from './content'
 
 function TelegramIcon() {
   return (
@@ -20,16 +27,17 @@ function TelegramIcon() {
 export default function App() {
   return (
     <div className="page-shell">
-      <div className="aurora aurora-left" />
-      <div className="aurora aurora-right" />
+      <div className="glow glow-left" />
+      <div className="glow glow-right" />
 
       <main className="layout">
         <section className="hero panel">
           <div className="hero-copy">
-            <p className="eyebrow">Narrative Resume</p>
+            <p className="eyebrow">{profile.target}</p>
             <h1>{profile.name}</h1>
             <p className="hero-role">{profile.role}</p>
             <p className="hero-tagline">{profile.tagline}</p>
+            <p className="hero-summary">{profile.summary}</p>
 
             <div className="hero-actions">
               <a
@@ -40,32 +48,36 @@ export default function App() {
               >
                 Написать в Telegram
               </a>
-              <a href="#projects" className="button-secondary">
-                Смотреть кейсы
+              <a href="#materials" className="button-secondary">
+                Смотреть материалы
               </a>
             </div>
 
             <div className="hero-facts">
-              <span className="fact-pill">{profile.location}</span>
-              <span className="fact-pill">MMO и live-service narrative</span>
+              <span className="fact-pill">Филологическое образование</span>
+              <span className="fact-pill">Романтическая проза</span>
+              <span className="fact-pill">Контент и аудитория</span>
             </div>
           </div>
 
           <div className="hero-visual">
             <div className="portrait-shell">
-              <div className="portrait-frame">
-                <img
-                  src={authorPhoto}
-                  alt={`Портрет ${profile.name}`}
-                  className="portrait-image"
-                />
+              <img
+                src={authorPhoto}
+                alt={`Портрет ${profile.name}`}
+                className="portrait-image"
+              />
+              <div className="portrait-overlay">
+                <span className="portrait-caption">
+                  Ищу первую роль в интерактивных историях
+                </span>
               </div>
             </div>
 
             <aside className="portrait-card panel">
-              <p className="card-label">Позиционирование</p>
-              <p className="card-accent">Stories for living game worlds</p>
-              <p className="card-text">{profile.summary}</p>
+              <p className="card-label">Подача</p>
+              <p className="card-accent">Romance, drama, character chemistry</p>
+              <p className="card-text">{profile.note}</p>
 
               <div className="contact-action">
                 <span className="contact-note">Контакт</span>
@@ -83,29 +95,35 @@ export default function App() {
           </div>
         </section>
 
-        <section className="stats">
-          {stats.map((item) => (
-            <article className="stat-card panel" key={item.label}>
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
+        <section className="marker-grid">
+          {markers.map((item) => (
+            <article className="marker-card panel" key={item.title}>
+              <p className="marker-accent">{item.accent}</p>
+              <h2>{item.title}</h2>
+              <p>{item.text}</p>
             </article>
           ))}
         </section>
 
-        <section className="content-grid">
+        <section className="chapter-grid">
           <article className="panel section-block">
-            <p className="section-kicker">Обо мне</p>
-            <h2>Пишу истории, которые работают на удержание и атмосферу</h2>
-            <p>
-              Умею держать баланс между художественной выразительностью,
-              ограничениями продакшена и игровыми системами. Работаю как с
-              масштабными сюжетными рамками, так и с точечными текстами внутри
-              интерфейсов, событий и коммуникаций с игроком.
-            </p>
+            <p className="section-kicker">Почему этот формат</p>
+            <h2>Мне близки истории, в которых выбор держится на чувствах</h2>
+
+            <div className="fit-list">
+              {fit.map((item, index) => (
+                <div className="fit-item" key={item}>
+                  <span className="fit-index">{String(index + 1).padStart(2, '0')}</span>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
           </article>
 
           <article className="panel section-block">
-            <p className="section-kicker">Сильные стороны</p>
+            <p className="section-kicker">Что привношу</p>
+            <h2>Сильные стороны для интерактивной романтической прозы</h2>
+
             <div className="tag-grid">
               {strengths.map((strength) => (
                 <span className="tag" key={strength}>
@@ -117,33 +135,30 @@ export default function App() {
         </section>
 
         <section className="panel section-block">
-          <p className="section-kicker">Опыт</p>
-          <h2>Роли и проекты</h2>
-          <div className="timeline">
-            {timeline.map((item) => (
-              <article className="timeline-item" key={item.period + item.title}>
-                <div className="timeline-meta">
-                  <span>{item.period}</span>
-                  <strong>{item.company}</strong>
-                </div>
-                <div className="timeline-content">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
+          <p className="section-kicker">Релевантный бэкграунд</p>
+          <h2>Не игровой стаж, а база, из которой может вырасти сильный writer</h2>
+
+          <div className="background-grid">
+            {background.map((item) => (
+              <article className="background-card" key={item.title}>
+                <p className="background-subtitle">{item.subtitle}</p>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="panel section-block" id="projects">
-          <p className="section-kicker">Портфолио</p>
-          <h2>Выбранные кейсы</h2>
+        <section className="panel section-block" id="materials">
+          <p className="section-kicker">Что могу показать</p>
+          <h2>Материалы, которые готова подготовить под отклик или тестовое</h2>
+
           <div className="project-grid">
-            {projects.map((project) => (
-              <article className="project-card" key={project.name}>
-                <p className="project-type">{project.type}</p>
-                <h3>{project.name}</h3>
-                <p>{project.text}</p>
+            {deliverables.map((item) => (
+              <article className="project-card" key={item.name}>
+                <p className="project-type">{item.type}</p>
+                <h3>{item.name}</h3>
+                <p>{item.text}</p>
               </article>
             ))}
           </div>
@@ -152,7 +167,7 @@ export default function App() {
         <section className="footer-cta panel">
           <div>
             <p className="section-kicker">Контакт</p>
-            <h2>Открыта к удаленной работе, проектным задачам и consulting</h2>
+            <h2>Открыта к тестовому заданию и первой роли автора интерактивных историй</h2>
           </div>
           <a
             href={profile.telegramUrl}
