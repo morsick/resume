@@ -1,3 +1,4 @@
+import authorPhoto from './assets/photo_2020-08-05_22-19-35.jpg'
 import { profile, projects, stats, strengths, timeline } from './content'
 
 function TelegramIcon() {
@@ -25,7 +26,7 @@ export default function App() {
       <main className="layout">
         <section className="hero panel">
           <div className="hero-copy">
-            <p className="eyebrow">Online Resume</p>
+            <p className="eyebrow">Narrative Resume</p>
             <h1>{profile.name}</h1>
             <p className="hero-role">{profile.role}</p>
             <p className="hero-tagline">{profile.tagline}</p>
@@ -37,32 +38,49 @@ export default function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Написать
+                Написать в Telegram
               </a>
               <a href="#projects" className="button-secondary">
                 Смотреть кейсы
               </a>
             </div>
+
+            <div className="hero-facts">
+              <span className="fact-pill">{profile.location}</span>
+              <span className="fact-pill">MMO и live-service narrative</span>
+            </div>
           </div>
 
-          <aside className="hero-card">
-            <p className="card-label">Позиционирование</p>
-            <p className="card-accent">Narrative for live worlds</p>
-            <p className="card-text">{profile.summary}</p>
-
-            <div className="contact-action">
-              <span className="contact-note">Контакт</span>
-              <a
-                href={profile.telegramUrl}
-                className="button-primary telegram-button"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <TelegramIcon />
-                <span>{profile.telegram}</span>
-              </a>
+          <div className="hero-visual">
+            <div className="portrait-shell">
+              <div className="portrait-frame">
+                <img
+                  src={authorPhoto}
+                  alt={`Портрет ${profile.name}`}
+                  className="portrait-image"
+                />
+              </div>
             </div>
-          </aside>
+
+            <aside className="portrait-card panel">
+              <p className="card-label">Позиционирование</p>
+              <p className="card-accent">Stories for living game worlds</p>
+              <p className="card-text">{profile.summary}</p>
+
+              <div className="contact-action">
+                <span className="contact-note">Контакт</span>
+                <a
+                  href={profile.telegramUrl}
+                  className="button-primary telegram-button"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <TelegramIcon />
+                  <span>{profile.telegram}</span>
+                </a>
+              </div>
+            </aside>
+          </div>
         </section>
 
         <section className="stats">
@@ -82,7 +100,7 @@ export default function App() {
               Умею держать баланс между художественной выразительностью,
               ограничениями продакшена и игровыми системами. Работаю как с
               масштабными сюжетными рамками, так и с точечными текстами внутри
-              интерфейсов и событий.
+              интерфейсов, событий и коммуникаций с игроком.
             </p>
           </article>
 

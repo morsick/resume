@@ -3,8 +3,8 @@ export const profile = {
   role: 'Сценарист онлайн-игр / Narrative Designer',
   location: 'Удаленно · Европа / СНГ',
   email: 'writer@example.com',
-  telegram: '@writer_handle',
-  telegramUrl: 'https://t.me/your_username',
+  telegram: '@CatSematary',
+  telegramUrl: 'https://t.me/CatSematary',
   tagline:
     'Создаю игровые миры, квестовые линии и диалоги, которые удерживают игрока в проекте дольше одной сессии.',
   summary:
