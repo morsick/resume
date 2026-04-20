@@ -1,5 +1,21 @@
 import { profile, projects, stats, strengths, timeline } from './content'
 
+function TelegramIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="button-icon"
+      fill="none"
+    >
+      <path
+        d="M21.5 4.5L18.4 19.1C18.17 20.14 17.58 20.39 16.7 19.9L11.98 16.42L9.7 18.62C9.45 18.87 9.24 19.08 8.76 19.08L9.1 14.27L17.86 6.35C18.24 6.01 17.78 5.82 17.28 6.15L6.45 12.97L1.79 11.51C0.78 11.19 0.76 10.49 2 10L20.19 2.99C21.04 2.68 21.78 3.19 21.5 4.5Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
 export default function App() {
   return (
     <div className="page-shell">
@@ -15,7 +31,12 @@ export default function App() {
             <p className="hero-tagline">{profile.tagline}</p>
 
             <div className="hero-actions">
-              <a href={`mailto:${profile.email}`} className="button-primary">
+              <a
+                href={profile.telegramUrl}
+                className="button-primary"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Написать
               </a>
               <a href="#projects" className="button-secondary">
@@ -29,19 +50,17 @@ export default function App() {
             <p className="card-accent">Narrative for live worlds</p>
             <p className="card-text">{profile.summary}</p>
 
-            <div className="contact-grid">
-              <div>
-                <span>Локация</span>
-                <strong>{profile.location}</strong>
-              </div>
-              <div>
-                <span>Email</span>
-                <strong>{profile.email}</strong>
-              </div>
-              <div>
-                <span>Telegram</span>
-                <strong>{profile.telegram}</strong>
-              </div>
+            <div className="contact-action">
+              <span className="contact-note">Контакт</span>
+              <a
+                href={profile.telegramUrl}
+                className="button-primary telegram-button"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <TelegramIcon />
+                <span>{profile.telegram}</span>
+              </a>
             </div>
           </aside>
         </section>
@@ -117,8 +136,14 @@ export default function App() {
             <p className="section-kicker">Контакт</p>
             <h2>Открыта к удаленной работе, проектным задачам и consulting</h2>
           </div>
-          <a href={`mailto:${profile.email}`} className="button-primary">
-            Связаться
+          <a
+            href={profile.telegramUrl}
+            className="button-primary telegram-button"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <TelegramIcon />
+            <span>Связаться</span>
           </a>
         </section>
       </main>

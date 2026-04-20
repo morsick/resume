@@ -206,24 +206,27 @@ h1 {
   color: rgba(248, 238, 228, 0.78);
 }
 
-.contact-grid {
-  display: grid;
-  gap: 1rem;
+.contact-action {
   margin-top: 2rem;
 }
 
-.contact-grid span {
-  display: block;
+.contact-note {
+  display: inline-block;
   font-size: 0.76rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: rgba(248, 238, 228, 0.48);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.8rem;
 }
 
-.contact-grid strong {
-  font-weight: 600;
-  color: #fff3e8;
+.telegram-button {
+  gap: 0.7rem;
+}
+
+.button-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
 }
 
 .stats {
