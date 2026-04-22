@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
   color-scheme: dark;
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: "Manrope", "Segoe UI", sans-serif;
   line-height: 1.65;
   font-weight: 400;
   color: #f3e7e6;
@@ -155,7 +155,7 @@ img {
 .contact-note,
 .marker-accent,
 .background-subtitle {
-  margin: 0 0 0.85rem;
+  margin: 0 0 1rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.72rem;
@@ -166,7 +166,7 @@ h1,
 h2,
 h3,
 .card-accent {
-  font-family: "Prata", Georgia, serif;
+  font-family: "Manrope", "Segoe UI", sans-serif;
   color: #fff1d9;
   letter-spacing: 0.01em;
   line-height: 1.04;
@@ -264,6 +264,10 @@ h1 {
   gap: 1rem;
 }
 
+.hero-visual > * {
+  min-width: 0;
+}
+
 .portrait-shell {
   position: relative;
   overflow: hidden;
@@ -308,6 +312,7 @@ h1 {
 }
 
 .portrait-card {
+  min-width: 0;
   padding: 1.35rem;
   border-radius: 28px;
   display: flex;
@@ -320,7 +325,10 @@ h1 {
 
 .card-accent {
   margin: 0;
-  font-size: 1.95rem;
+  max-width: 100%;
+  font-size: 25px;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
 }
 
 .card-text {
@@ -335,6 +343,47 @@ h1 {
 .contact-note {
   display: inline-block;
   margin-bottom: 0.8rem;
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-list-compact {
+  width: 100%;
+}
+
+.contact-list-compact .contact-link-label,
+.contact-list-compact .contact-link-value {
+  font-size: 12px;
+}
+
+.contact-link {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(244, 211, 154, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.contact-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 211, 154, 0.28);
+}
+
+.contact-link-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold-soft);
+}
+
+.contact-link-value {
+  color: #fff1d9;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .telegram-button {
@@ -374,6 +423,17 @@ h1 {
   color: var(--text-muted);
 }
 
+.marker-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.marker-link:hover {
+  opacity: 0.82;
+}
+
 .chapter-grid {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
@@ -385,8 +445,15 @@ h1 {
 
 .section-block h2 {
   margin: 0;
+}
+
+.chapter-title {
+  font-size: 35px;
+  max-width: none;
+}
+
+.section-heading {
   font-size: clamp(2rem, 4vw, 3rem);
-  max-width: 17ch;
 }
 
 .section-block p {
@@ -396,7 +463,7 @@ h1 {
 .fit-list {
   display: grid;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 3.5rem;
 }
 
 .fit-item {
@@ -418,7 +485,7 @@ h1 {
 }
 
 .fit-index {
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: "Manrope", "Segoe UI", sans-serif;
   display: block;
   font-size: 1.2rem;
   font-weight: 700;
@@ -426,6 +493,137 @@ h1 {
   letter-spacing: 0.04em;
   color: var(--gold);
   line-height: 1.1;
+}
+
+.capability-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 3.5rem;
+}
+
+.capability-card {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(244, 211, 154, 0.12);
+}
+
+.capability-card:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.capability-card h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.capability-card p {
+  margin: 0.55rem 0 0;
+}
+
+.competency-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.competency-item {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(244, 211, 154, 0.12);
+}
+
+.competency-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.competency-item h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.competency-item p {
+  margin: 0;
+}
+
+.experience-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+  gap: 1.4rem;
+  align-items: start;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(244, 211, 154, 0.12);
+}
+
+.experience-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.experience-meta h3 {
+  margin: 0.35rem 0 0;
+  font-size: 1.35rem;
+}
+
+.experience-period,
+.experience-role {
+  margin: 0;
+}
+
+.experience-period {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.experience-role {
+  margin-top: 0.45rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.experience-content {
+  min-width: 0;
+}
+
+.experience-details {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text-muted);
+}
+
+.experience-details li + li {
+  margin-top: 0.45rem;
+}
+
+.experience-inline-link {
+  display: inline-flex;
+  margin-left: 0.5rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.experience-inline-link:hover {
+  opacity: 0.82;
+}
+
+.experience-link {
+  display: inline-flex;
+  margin-top: 0.9rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.experience-link:hover {
+  opacity: 0.82;
 }
 
 .tag-grid {
@@ -467,7 +665,7 @@ h1 {
 }
 
 .project-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1.4rem;
 }
 
@@ -493,7 +691,7 @@ h1 {
   border-radius: 30px;
   padding: 1.7rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   background:
@@ -501,9 +699,19 @@ h1 {
     rgba(18, 14, 27, 0.92);
 }
 
+.footer-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+}
+
 .footer-cta h2 {
   margin: 0;
-  max-width: 22ch;
+  max-width: 46ch;
+}
+
+.footer-contact-list {
+  width: min(100%, 23rem);
 }
 
 @keyframes rise {
@@ -576,6 +784,16 @@ h1 {
   .portrait-shell {
     min-height: 24rem;
     border-radius: 24px;
+  }
+
+  .competency-item {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .experience-item {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
 
   h1 {

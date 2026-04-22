@@ -1,11 +1,13 @@
 import authorPhoto from './assets/photo_2020-08-05_22-19-35.jpg'
 import {
   background,
+  capabilities,
+  competencies,
+  experience,
   deliverables,
   fit,
   markers,
   profile,
-  strengths,
 } from './content'
 
 function TelegramIcon() {
@@ -25,6 +27,27 @@ function TelegramIcon() {
 }
 
 export default function App() {
+  const contactChannels = [
+    {
+      label: 'Telegram',
+      value: profile.telegram,
+      href: profile.telegramUrl,
+      external: true,
+    },
+    {
+      label: 'VK',
+      value: profile.vk,
+      href: profile.vkUrl,
+      external: true,
+    },
+    {
+      label: 'Почта',
+      value: profile.email,
+      href: profile.emailUrl,
+      external: false,
+    },
+  ]
+
   return (
     <div className="page-shell">
       <div className="glow glow-left" />
@@ -54,7 +77,7 @@ export default function App() {
             </div>
 
             <div className="hero-facts">
-              <span className="fact-pill">Филологическое образование</span>
+              <span className="fact-pill">Филологическая база</span>
               <span className="fact-pill">Романтическая проза</span>
               <span className="fact-pill">Контент и аудитория</span>
             </div>
@@ -69,27 +92,32 @@ export default function App() {
               />
               <div className="portrait-overlay">
                 <span className="portrait-caption">
-                  Ищу первую роль в интерактивных историях
+                  Открыта к тестовому и первой роли в студии
                 </span>
               </div>
             </div>
 
             <aside className="portrait-card panel">
-              <p className="card-label">Подача</p>
-              <p className="card-accent">Romance, drama, character chemistry</p>
+              <p className="card-label">Фокус</p>
+              <p className="card-accent">Романтические интерактивные истории</p>
               <p className="card-text">{profile.note}</p>
 
               <div className="contact-action">
                 <span className="contact-note">Контакт</span>
-                <a
-                  href={profile.telegramUrl}
-                  className="button-primary telegram-button"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <TelegramIcon />
-                  <span>{profile.telegram}</span>
-                </a>
+                <div className="contact-list contact-list-compact">
+                  {contactChannels.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="contact-link"
+                      target={item.external ? '_blank' : undefined}
+                      rel={item.external ? 'noreferrer' : undefined}
+                    >
+                      <span className="contact-link-label">{item.label}</span>
+                      <span className="contact-link-value">{item.value}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </aside>
           </div>
@@ -101,6 +129,11 @@ export default function App() {
               <p className="marker-accent">{item.accent}</p>
               <h2>{item.title}</h2>
               <p>{item.text}</p>
+              {item.linkUrl ? (
+                <a href={item.linkUrl} className="marker-link" target="_blank" rel="noreferrer">
+                  {item.linkLabel}
+                </a>
+              ) : null}
             </article>
           ))}
         </section>
@@ -108,7 +141,7 @@ export default function App() {
         <section className="chapter-grid">
           <article className="panel section-block">
             <p className="section-kicker">Почему этот формат</p>
-            <h2>Мне близки истории, в которых выбор держится на чувствах</h2>
+            <h2 className="chapter-title">Мне близки истории, в которых выбор держится на чувствах</h2>
 
             <div className="fit-list">
               {fit.map((item, index) => (
@@ -121,22 +154,86 @@ export default function App() {
           </article>
 
           <article className="panel section-block">
-            <p className="section-kicker">Что привношу</p>
-            <h2>Сильные стороны для интерактивной романтической прозы</h2>
+            <p className="section-kicker">Что могу делать уже сейчас</p>
+            <h2 className="chapter-title">Прикладные навыки для тестового и рабочей задачи</h2>
 
-            <div className="tag-grid">
-              {strengths.map((strength) => (
-                <span className="tag" key={strength}>
-                  {strength}
-                </span>
+            <div className="capability-list">
+              {capabilities.map((item) => (
+                <article className="capability-card" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
               ))}
             </div>
           </article>
         </section>
 
         <section className="panel section-block">
-          <p className="section-kicker">Релевантный бэкграунд</p>
-          <h2>Не игровой стаж, а база, из которой может вырасти сильный writer</h2>
+          <p className="section-kicker">Компетенции</p>
+          <h2 className="section-heading">Навыки для сценарной и контентной работы:</h2>
+
+          <div className="competency-list">
+            {competencies.map((item) => (
+              <article className="competency-item" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="panel section-block">
+          <p className="section-kicker">Опыт работы</p>
+          <h2 className="section-heading">Где работала и с какими задачами уже сталкивалась</h2>
+
+          <div className="experience-list">
+            {experience.map((item) => (
+              <article className="experience-item" key={`${item.period}-${item.company}`}>
+                <div className="experience-meta">
+                  <p className="experience-period">{item.period}</p>
+                  <h3>{item.company}</h3>
+                  <p className="experience-role">{item.role}</p>
+                </div>
+
+                <div className="experience-content">
+                  <ul className="experience-details">
+                    {item.details.map((detail) => (
+                      <li key={typeof detail === 'string' ? detail : detail.text}>
+                        {typeof detail === 'string' ? (
+                          detail
+                        ) : (
+                          <>
+                            <span>{detail.text}</span>
+                            {detail.linkUrl ? (
+                              <a
+                                href={detail.linkUrl}
+                                className="experience-inline-link"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {detail.linkLabel}
+                              </a>
+                            ) : null}
+                          </>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {item.linkUrl ? (
+                    <a href={item.linkUrl} className="experience-link" target="_blank" rel="noreferrer">
+                      {item.linkLabel}
+                    </a>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="panel section-block">
+          <p className="section-kicker">Опыт и база</p>
+          <h2 className="section-heading">База, которую переношу в интерактивную прозу</h2>
 
           <div className="background-grid">
             {background.map((item) => (
@@ -150,8 +247,8 @@ export default function App() {
         </section>
 
         <section className="panel section-block" id="materials">
-          <p className="section-kicker">Что могу показать</p>
-          <h2>Материалы, которые готова подготовить под отклик или тестовое</h2>
+          <p className="section-kicker">Что могу подготовить</p>
+          <h2 className="section-heading">Материалы для отклика или тестового задания</h2>
 
           <div className="project-grid">
             {deliverables.map((item) => (
@@ -165,19 +262,24 @@ export default function App() {
         </section>
 
         <section className="footer-cta panel">
-          <div>
+          <div className="footer-copy">
             <p className="section-kicker">Контакт</p>
-            <h2>Открыта к тестовому заданию и первой роли автора интерактивных историй</h2>
+            <h2>Открыта к тестовому заданию и работе над романтическими интерактивными историями</h2>
           </div>
-          <a
-            href={profile.telegramUrl}
-            className="button-primary telegram-button"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <TelegramIcon />
-            <span>Связаться</span>
-          </a>
+          <div className="contact-list footer-contact-list">
+            {contactChannels.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="contact-link footer-contact-link"
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noreferrer' : undefined}
+              >
+                <span className="contact-link-label">{item.label}</span>
+                <span className="contact-link-value">{item.value}</span>
+              </a>
+            ))}
+          </div>
         </section>
       </main>
     </div>
