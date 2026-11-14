@@ -32,6 +32,9 @@ jobs:
         run: npm install
 
       - name: Build
+        env:
+          VITE_BASE_PATH: /resume/
+          VITE_YM_COUNTER_ID: ${{ vars.VITE_YM_COUNTER_ID }}
         run: npm run build
 
       - name: Setup Pages
